@@ -390,7 +390,6 @@ const api = (() => {
     getDetailThread,
     createComment,
     upVoteThread,
-    upVoteThread,
     downVoteThread,
     neutralizeThreadVote,
     upVoteComment,
