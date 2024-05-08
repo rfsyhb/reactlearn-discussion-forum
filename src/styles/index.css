@@ -1,68 +1,67 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --primary: #bb86fc;
+  --primary-variant: #3700b3;
+  --secondary: #03dac6;
+  --background: #121212;
+  --surface: #121212;
+  --error: #cf6679;
+  --warning: #f39c12;
+  --on-background: #ffffff;
+  --on-background-grey: #c7c7c7;
+  --on-surface: #ffffff;
+}
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+[data-theme='light'] {
+  --background: #dddddd;
+  --suface: #ffffff;
+  --on-background: #333333;
+  --on-background-grey: #6d6d6d;
+  --on-surface: #333333;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  color: var(--on-background);
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  /* font-family: 'Inter', sans-serif; */
+  font-family: 'Poppins', sans-serif;
+}
+
+.app-container {
+  color: var(--on-background);
+  background-color: var(--background);
   min-height: 100vh;
+  transition: all ease-in-out 0.5s;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--on-background);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+header h1 {
+  flex: 1;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+header .navigation ul li {
+  display: inline-block;
+  font-size: 24px;
+  margin: 0 8px;
+}
+
+main {
+  margin: 0 auto;
+  padding: 32px 0;
+  width: 90%;
+  max-width: 1200px;
 }
