@@ -6,7 +6,7 @@ const api = (() => {
   }
 
   function getAccessToken() {
-    localStorage.getItem('accessToken');
+    return localStorage.getItem('accessToken');
   }
 
   async function _fetchWithAuth(url, options = {}) {

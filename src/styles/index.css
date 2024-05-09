@@ -61,7 +61,20 @@ header .navigation ul li {
 
 main {
   margin: 0 auto;
-  padding: 32px 0;
+  padding: 32px;
+  /* background-color: #03dac6; */
   width: 90%;
   max-width: 1200px;
+}
+
+.loading {
+  position: sticky;
+  top: 0;
+}
+
+.error-page {
+  margin: 0 auto;
+  margin-top: 32px; 
+  /* width: 90%; */
+  /* background-color: #03dac6; */
 }
