@@ -74,7 +74,203 @@ main {
 
 .error-page {
   margin: 0 auto;
-  margin-top: 32px; 
+  margin-top: 32px;
   /* width: 90%; */
   /* background-color: #03dac6; */
+}
+
+.card {
+  box-shadow: 0 0px 5px 0 rgba(221, 221, 221, 0.6);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+
+  padding: 1.3rem;
+}
+
+nav {
+  display: flex;
+  gap: 1em;
+  /* background-color: #03dac6; */
+}
+
+nav > ul {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  list-style-type: none;
+}
+
+nav > p {
+  font-weight: 500;
+  font-size: 1.3em;
+}
+
+Link {
+  text-decoration: none;
+}
+
+.leaderboards-page__header_container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding-top: 0;
+}
+
+.leaderboards-item__container {
+  padding-top: 1em;
+}
+
+.leaderboard_item {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  padding: 0 0 0.5em 0;
+}
+
+.leaderboard_item-avatar {
+  flex-grow: 0;
+  order: 1;
+}
+
+.leaderboard_item-name {
+  flex-grow: 1;
+  order: 2;
+}
+
+.leaderboard_item-score {
+  flex-grow: 0;
+  order: 3;
+}
+
+.form-page {
+  margin: 0 auto;
+  padding: 32px;
+  /* background-color: #03dac6; */
+  width: 90%;
+  max-width: 1200px;
+}
+
+.input-login,
+.input-register,
+.input-thread {
+  margin: 32px 0;
+}
+
+.input-login label,
+.input-register label,
+.input-thread label {
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+.input-login input,
+.input-register input,
+.input-thread input,
+.input-thread textarea {
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background-color: transparent;
+  border-radius: 8px;
+  border: 3px solid var(--on-background);
+  color: var(--on-background);
+}
+
+.input-login button,
+.input-register button,
+.input-thread button {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  background-color: var(--on-background);
+  color: var(--background);
+  cursor: pointer;
+}
+
+.button-category {
+  display: flex;
+  gap: 0.5em;
+  padding: 1em 0;
+}
+
+.button-category > button {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 0.3em;
+  border: 0;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  background-color: var(--on-background);
+  color: var(--background);
+  cursor: pointer;
+}
+
+.threads-list {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.5em;
+}
+
+.thread-item__category {
+  padding: 4px;
+  border: 0;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+.thread-item__user-name {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.comment_form-text-area {
+  width: 100%;
+}
+
+.comment_form-submit {
+  width: 100%;
+  padding: 0.5em;
+}
+
+.comments-list {
+  padding: 1em;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.comment-item_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Tambahkan baris ini */
+}
+
+.comment-item_profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.comment-item_created {
+  font-size: 0.9em;
 }

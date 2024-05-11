@@ -1,5 +1,4 @@
 import React from 'react';
-import { IoEarthOutline } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { asyncSetAuthUser } from '../states/authUser/action';
@@ -15,20 +14,16 @@ export default function LoginPage() {
   };
 
   return (
-    <section className="login-page">
-      <header className="login-page__hero">
-        <h1>
-          <IoEarthOutline />
-        </h1>
-      </header>
-      <article className="login-page__main">
-        <h2>Login</h2>
+    <div className="form-page">
+      <article className="login-content">
+        <h2>Login User</h2>
         <LoginForm login={onLogin} />
-
         <p>
-          Doesn't have an account? <Link to="/register">Register here</Link>
+          Doesn&apos;t have an account?
+          {' '}
+          <Link to="/register">Register here</Link>
         </p>
       </article>
-    </section>
+    </div>
   );
 }

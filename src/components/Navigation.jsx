@@ -1,5 +1,7 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Button } from '@mui/material';
 
 export default function Navigation({ authUser, logout }) {
   if (authUser === null) {
@@ -19,22 +21,26 @@ export default function Navigation({ authUser, logout }) {
 
   return (
     <nav>
-      <p>Hallo {authUser.name}</p>
+      <p>
+        Hallo&nbsp;
+        {authUser.name}
+      </p>
       <ul>
         <li>
           <Link to="/">Homepage</Link>
         </li>
         <li>
-          <Link to="/leaderboards">Leaderboards</Link>
+          <Link to="/leaderboard">Leaderboard</Link>
         </li>
         <li>
-          <button
+          <Button
+            variant="outlined"
             type="button"
             onClick={logout}
             className="button-logout"
           >
             Logout
-          </button>
+          </Button>
         </li>
       </ul>
     </nav>

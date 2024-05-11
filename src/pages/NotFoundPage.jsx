@@ -6,7 +6,7 @@ export default function NotFoundPage() {
     <div className="error-page">
       <h1>Oops! 404</h1>
       <p>Halaman yang anda cari tidak ditemukan!</p>
-      <button>
+      <button type="button">
         <Link to="/">Kembali</Link>
       </button>
     </div>

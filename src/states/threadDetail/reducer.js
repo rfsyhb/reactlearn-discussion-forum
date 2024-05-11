@@ -12,8 +12,8 @@ export default function threadDetailReducer(threadDetail = null, action = {}) {
           : threadDetail.upVotesBy.concat([action.payload.userId]),
         downVotesBy: threadDetail.downVotesBy.includes(action.payload.userId)
           ? threadDetail.downVotesBy.filter(
-              (id) => id !== action.payload.userId
-            )
+            (id) => id !== action.payload.userId,
+          )
           : threadDetail.downVotesBy,
       };
     case ActionType.DOWN_VOTE_THREAD_DETAIL:
@@ -24,8 +24,8 @@ export default function threadDetailReducer(threadDetail = null, action = {}) {
           : threadDetail.upVotesBy,
         downVotesBy: threadDetail.downVotesBy.includes(action.payload.userId)
           ? threadDetail.downVotesBy.filter(
-              (id) => id !== action.payload.userId
-            )
+            (id) => id !== action.payload.userId,
+          )
           : threadDetail.downVotesBy.concat([action.payload.userId]),
       };
     case ActionType.NEUTRALIZE_VOTE_THREAD_DETAIL:
@@ -36,8 +36,8 @@ export default function threadDetailReducer(threadDetail = null, action = {}) {
           : threadDetail.upVotesBy,
         downVotesBy: threadDetail.downVotesBy.includes(action.payload.userId)
           ? threadDetail.downVotesBy.filter(
-              (id) => id !== action.payload.userId
-            )
+            (id) => id !== action.payload.userId,
+          )
           : threadDetail.downVotesBy,
       };
     case ActionType.CREATE_COMMENT:
@@ -57,8 +57,8 @@ export default function threadDetailReducer(threadDetail = null, action = {}) {
                 : comment.upVotesBy.concat([action.payload.userId]),
               downVotesBy: comment.downVotesBy.includes(action.payload.userId)
                 ? comment.downVotesBy.filter(
-                    (id) => id !== action.payload.userId
-                  )
+                  (id) => id !== action.payload.userId,
+                )
                 : comment.downVotesBy,
             };
           }
@@ -77,8 +77,8 @@ export default function threadDetailReducer(threadDetail = null, action = {}) {
                 : comment.upVotesBy,
               downVotesBy: comment.downVotesBy.includes(action.payload.userId)
                 ? comment.downVotesBy.filter(
-                    (id) => id !== action.payload.userId
-                  )
+                  (id) => id !== action.payload.userId,
+                )
                 : comment.downVotesBy.concat([action.payload.userId]),
             };
           }
@@ -97,8 +97,8 @@ export default function threadDetailReducer(threadDetail = null, action = {}) {
                 : comment.upVotesBy,
               downVotesBy: comment.downVotesBy.includes(action.payload.userId)
                 ? comment.downVotesBy.filter(
-                    (id) => id !== action.payload.userId
-                  )
+                  (id) => id !== action.payload.userId,
+                )
                 : comment.downVotesBy,
             };
           }

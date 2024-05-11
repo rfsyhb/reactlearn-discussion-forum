@@ -103,7 +103,7 @@ function asyncNeutralizeVoteThread(threadId) {
   return async (dispatch, getState) => {
     const { authUser } = getState();
     dispatch(
-      neutralizeVoteThreadActionCreator({ threadId, userId: authUser.id })
+      neutralizeVoteThreadActionCreator({ threadId, userId: authUser.id }),
     );
 
     try {
@@ -111,7 +111,7 @@ function asyncNeutralizeVoteThread(threadId) {
     } catch (error) {
       alert(error.message);
       dispatch(
-        neutralizeVoteThreadActionCreator({ threadId, userId: authUser.id })
+        neutralizeVoteThreadActionCreator({ threadId, userId: authUser.id }),
       );
     }
   };
