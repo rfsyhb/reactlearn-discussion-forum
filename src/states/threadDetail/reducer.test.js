@@ -167,7 +167,7 @@ describe('threadDetailReducer function', () => {
     // action 1: up vote when user not in upVotesBy
     const nextStateUpVoteNoUser = threadDetailReducer(
       initialState,
-      actionUpVoteNoUser
+      actionUpVoteNoUser,
     );
 
     // assert 1
@@ -176,23 +176,23 @@ describe('threadDetailReducer function', () => {
     // action 2: up vote when user already in upVotesBy
     const nextStateUpVoteAvailableUser = threadDetailReducer(
       nextStateUpVoteNoUser,
-      actionUpVoteAvailableUser
+      actionUpVoteAvailableUser,
     );
 
     // assert 2
     expect(nextStateUpVoteAvailableUser).toEqual(
-      expectedStateUpVoteAvailableUser
+      expectedStateUpVoteAvailableUser,
     );
 
     // action 3: up vote when user already in downVotesBy
     const nextStateUpVoteAvailableDownVote = threadDetailReducer(
       initialStateWithDownVote,
-      actionUpVoteAvailableUserDownVote
+      actionUpVoteAvailableUserDownVote,
     );
 
     // assert 3
     expect(nextStateUpVoteAvailableDownVote).toEqual(
-      expectedStateUpVoteAvailableUserDownVote
+      expectedStateUpVoteAvailableUserDownVote,
     );
   });
 
@@ -274,7 +274,7 @@ describe('threadDetailReducer function', () => {
     // action 1: down vote when user not in downVotesBy
     const nextStateDownVoteNoUser = threadDetailReducer(
       initialState,
-      actionDownVoteNoUser
+      actionDownVoteNoUser,
     );
 
     // assert 1
@@ -283,23 +283,23 @@ describe('threadDetailReducer function', () => {
     // action 2: down vote when user already in upVotesBy
     const nextStateDownVoteAvailableUserUpVote = threadDetailReducer(
       initialState,
-      actionDownVoteAvailableUserUpVote
+      actionDownVoteAvailableUserUpVote,
     );
 
     // assert 2
     expect(nextStateDownVoteAvailableUserUpVote).toEqual(
-      expectedStateDownVoteAvailableUserUpVote
+      expectedStateDownVoteAvailableUserUpVote,
     );
 
     // action 3: down vote when user already in downVotesBy
     const nextStateDownVoteAvailableUserDownVote = threadDetailReducer(
       initialState,
-      actionDownVoteAvailableUserDownVote
+      actionDownVoteAvailableUserDownVote,
     );
 
     // assert 3
     expect(nextStateDownVoteAvailableUserDownVote).toEqual(
-      expectedStateDownVoteAvailableUserDownVote
+      expectedStateDownVoteAvailableUserDownVote,
     );
   });
 
@@ -362,7 +362,7 @@ describe('threadDetailReducer function', () => {
     // action 1: neutralize vote when user was in upVotesBy
     const nextStateNeutralizeUpVote = threadDetailReducer(
       initialState,
-      actionNeutralizeUpVote
+      actionNeutralizeUpVote,
     );
 
     // assert 1
@@ -371,12 +371,12 @@ describe('threadDetailReducer function', () => {
     // action 2: neutralize vote when user was in downVotesBy
     const nextStateNeutralizeDownVote = threadDetailReducer(
       initialState,
-      actionNeutralizeDownVote
+      actionNeutralizeDownVote,
     );
 
     // assert 2
     expect(nextStateNeutralizeDownVote).toEqual(
-      expectedStateNeutralizeDownVote
+      expectedStateNeutralizeDownVote,
     );
   });
 
@@ -520,34 +520,34 @@ describe('threadDetailReducer function', () => {
     // action 1: up vote comment when user not in upVotesBy
     const nextStateUpVoteCommentNoUser = threadDetailReducer(
       initialState,
-      actionUpVoteCommentNoUser
+      actionUpVoteCommentNoUser,
     );
 
     // assert 1
     expect(nextStateUpVoteCommentNoUser).toEqual(
-      expectedStateUpVoteCommentNoUser
+      expectedStateUpVoteCommentNoUser,
     );
 
     // action 2: up vote comment when user already in upVotesBy
     const nextStateUpVoteCommentAvailableUser = threadDetailReducer(
       expectedStateUpVoteCommentNoUser,
-      actionUpVoteCommentAvailableUser
+      actionUpVoteCommentAvailableUser,
     );
 
     // assert 2
     expect(nextStateUpVoteCommentAvailableUser).toEqual(
-      expectedStateUpVoteCommentAvailableUser
+      expectedStateUpVoteCommentAvailableUser,
     );
 
     // action 3: up vote comment when user already in downVotesBy
     const nextStateUpVoteCommentAvailableUserDownVote = threadDetailReducer(
       initialState,
-      actionUpVoteCommentAvailableUserDownVote
+      actionUpVoteCommentAvailableUserDownVote,
     );
 
     // assert 3
     expect(nextStateUpVoteCommentAvailableUserDownVote).toEqual(
-      expectedStateUpVoteCommentAvailableUserDownVote
+      expectedStateUpVoteCommentAvailableUserDownVote,
     );
   });
 
@@ -653,34 +653,34 @@ describe('threadDetailReducer function', () => {
     // action 1: down vote comment when user not in downVotesBy
     const nextStateDownVoteCommentNoUser = threadDetailReducer(
       initialState,
-      actionDownVoteCommentNoUser
+      actionDownVoteCommentNoUser,
     );
 
     // assert 1
     expect(nextStateDownVoteCommentNoUser).toEqual(
-      expectedStateDownVoteCommentNoUser
+      expectedStateDownVoteCommentNoUser,
     );
 
     // action 2: down vote comment when user already in downVotesBy
     const nextStateDownVoteCommentAvailableUser = threadDetailReducer(
       initialStateWithDownVote,
-      actionDownVoteCommentAvailableUser
+      actionDownVoteCommentAvailableUser,
     );
 
     // assert 2
     expect(nextStateDownVoteCommentAvailableUser).toEqual(
-      expectedStateDownVoteCommentAvailableUser
+      expectedStateDownVoteCommentAvailableUser,
     );
 
     // action 3: down vote comment when user already in upVotesBy
     const nextStateDownVoteCommentAvailableUserUpVote = threadDetailReducer(
       initialState,
-      actionDownVoteCommentAvailableUserUpVote
+      actionDownVoteCommentAvailableUserUpVote,
     );
 
     // assert 3
     expect(nextStateDownVoteCommentAvailableUserUpVote).toEqual(
-      expectedStateDownVoteCommentAvailableUserUpVote
+      expectedStateDownVoteCommentAvailableUserUpVote,
     );
   });
 
@@ -756,23 +756,23 @@ describe('threadDetailReducer function', () => {
     // action 1: neutralize vote when user was in upVotesBy
     const nextStateNeutralizeVoteInUpVotes = threadDetailReducer(
       initialState,
-      actionNeutralizeVoteInUpVotes
+      actionNeutralizeVoteInUpVotes,
     );
 
     // assert 1
     expect(nextStateNeutralizeVoteInUpVotes).toEqual(
-      expectedStateNeutralizeVoteInUpVotes
+      expectedStateNeutralizeVoteInUpVotes,
     );
 
     // action 2: neutralize vote when user was in downVotesBy
     const nextStateNeutralizeVoteInDownVotes = threadDetailReducer(
       initialState,
-      actionNeutralizeVoteInDownVotes
+      actionNeutralizeVoteInDownVotes,
     );
 
     // assert 2
     expect(nextStateNeutralizeVoteInDownVotes).toEqual(
-      expectedStateNeutralizeVoteInDownVotes
+      expectedStateNeutralizeVoteInDownVotes,
     );
   });
 });
