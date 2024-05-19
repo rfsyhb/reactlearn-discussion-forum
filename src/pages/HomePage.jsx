@@ -9,6 +9,8 @@ import {
   asyncUpVoteThread,
 } from '../states/threads/action';
 import ThreadList from '../components/ThreadList';
+import Buttons from '../components/styled/Buttons';
+import ButtonCategory from '../components/styled/ButtonCategory';
 
 export default function HomePage() {
   const {
@@ -51,22 +53,34 @@ export default function HomePage() {
       <div>
         <div className="homepage__action">
           <Link to="/add-thread">
-            <Button variant="contained" className="action">
+            <Button
+              variant="contained"
+              className="action"
+            >
               Tambah Thread Baru
             </Button>
           </Link>
         </div>
         <div>
           {/* Menampilkan kategori */}
-          <div className="button-category">
-            <button type="button" onClick={() => setFilter('')}>Show All</button>
+          <ButtonCategory>
+            <Buttons
+              type="button"
+              onClick={() => setFilter('')}
+            >
+              Show All
+            </Buttons>
             {Array.from(categories).map((category) => (
-              <button type="button" key={category} onClick={() => setFilter(category)}>
+              <Buttons
+                type="button"
+                key={category}
+                onClick={() => setFilter(category)}
+              >
                 #
                 {category}
-              </button>
+              </Buttons>
             ))}
-          </div>
+          </ButtonCategory>
           <ThreadList
             threads={
               filter
