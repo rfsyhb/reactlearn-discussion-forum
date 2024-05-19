@@ -167,7 +167,7 @@ describe('threadDetailReducer function', () => {
     // action 1: up vote when user not in upVotesBy
     const nextStateUpVoteNoUser = threadDetailReducer(
       initialState,
-      actionUpVoteNoUser,
+      actionUpVoteNoUser
     );
 
     // assert 1
@@ -176,23 +176,23 @@ describe('threadDetailReducer function', () => {
     // action 2: up vote when user already in upVotesBy
     const nextStateUpVoteAvailableUser = threadDetailReducer(
       nextStateUpVoteNoUser,
-      actionUpVoteAvailableUser,
+      actionUpVoteAvailableUser
     );
 
     // assert 2
     expect(nextStateUpVoteAvailableUser).toEqual(
-      expectedStateUpVoteAvailableUser,
+      expectedStateUpVoteAvailableUser
     );
 
     // action 3: up vote when user already in downVotesBy
     const nextStateUpVoteAvailableDownVote = threadDetailReducer(
       initialStateWithDownVote,
-      actionUpVoteAvailableUserDownVote,
+      actionUpVoteAvailableUserDownVote
     );
 
     // assert 3
     expect(nextStateUpVoteAvailableDownVote).toEqual(
-      expectedStateUpVoteAvailableUserDownVote,
+      expectedStateUpVoteAvailableUserDownVote
     );
   });
 
@@ -274,7 +274,7 @@ describe('threadDetailReducer function', () => {
     // action 1: down vote when user not in downVotesBy
     const nextStateDownVoteNoUser = threadDetailReducer(
       initialState,
-      actionDownVoteNoUser,
+      actionDownVoteNoUser
     );
 
     // assert 1
@@ -283,37 +283,149 @@ describe('threadDetailReducer function', () => {
     // action 2: down vote when user already in upVotesBy
     const nextStateDownVoteAvailableUserUpVote = threadDetailReducer(
       initialState,
-      actionDownVoteAvailableUserUpVote,
+      actionDownVoteAvailableUserUpVote
     );
 
     // assert 2
     expect(nextStateDownVoteAvailableUserUpVote).toEqual(
-      expectedStateDownVoteAvailableUserUpVote,
+      expectedStateDownVoteAvailableUserUpVote
     );
 
     // action 3: down vote when user already in downVotesBy
     const nextStateDownVoteAvailableUserDownVote = threadDetailReducer(
       initialState,
-      actionDownVoteAvailableUserDownVote,
+      actionDownVoteAvailableUserDownVote
     );
 
     // assert 3
     expect(nextStateDownVoteAvailableUserDownVote).toEqual(
-      expectedStateDownVoteAvailableUserDownVote,
+      expectedStateDownVoteAvailableUserDownVote
     );
   });
 
   it(`should return threadDetail without user in upVotesBy and downVotesBy if user was 
       in upVotesBy or downVotesBy for NEUTRALIZE_VOTE_THREAD_DETAIL action`, () => {
     // arrange
-    // action
-    // assert
+    const initialState = {
+      id: 'thread-1',
+      title: 'Thread Pertama',
+      body: 'Ini adalah thread pertama',
+      category: 'General',
+      createdAt: '2021-06-21T07:00:00.000Z',
+      owner: {
+        id: 'users-1',
+        name: 'John Doe',
+        avatar: 'https://generated-image-url.jpg',
+      },
+      upVotesBy: ['testUser-1'],
+      downVotesBy: ['testUser-2'],
+      comments: [
+        {
+          id: 'comment-1',
+          content: 'Ini adalah komentar pertama',
+          createdAt: '2021-06-21T07:00:00.000Z',
+          owner: {
+            id: 'users-1',
+            name: 'John Doe',
+            avatar: 'https://generated-image-url.jpg',
+          },
+          upVotesBy: [],
+          downVotesBy: [],
+        },
+      ],
+    };
+
+    const actionNeutralizeUpVote = {
+      type: 'NEUTRALIZE_VOTE_THREAD',
+      payload: {
+        userId: 'testUser-1',
+      },
+    };
+
+    const expectedStateNeutralizeUpVote = {
+      ...initialState,
+      upVotesBy: [],
+    };
+
+    const actionNeutralizeDownVote = {
+      type: 'NEUTRALIZE_VOTE_THREAD',
+      payload: {
+        userId: 'testUser-2',
+      },
+    };
+
+    const expectedStateNeutralizeDownVote = {
+      ...initialState,
+      downVotesBy: [],
+    };
+
+    // action 1: neutralize vote when user was in upVotesBy
+    const nextStateNeutralizeUpVote = threadDetailReducer(
+      initialState,
+      actionNeutralizeUpVote
+    );
+
+    // assert 1
+    expect(nextStateNeutralizeUpVote).toEqual(expectedStateNeutralizeUpVote);
+
+    // action 2: neutralize vote when user was in downVotesBy
+    const nextStateNeutralizeDownVote = threadDetailReducer(
+      initialState,
+      actionNeutralizeDownVote
+    );
+
+    // assert 2
+    expect(nextStateNeutralizeDownVote).toEqual(
+      expectedStateNeutralizeDownVote
+    );
   });
 
   it('should return threadDetail with new comments for CREATE_COMMENT action', () => {
     // arrange
+    const initialState = {
+      id: 'thread-1',
+      title: 'Thread Pertama',
+      body: 'Ini adalah thread pertama',
+      category: 'General',
+      createdAt: '2021-06-21T07:00:00.000Z',
+      owner: {
+        id: 'users-1',
+        name: 'John Doe',
+        avatar: 'https://generated-image-url.jpg',
+      },
+      upVotesBy: ['testUser-1'],
+      downVotesBy: ['testUser-2'],
+      comments: [],
+    };
+
+    const action = {
+      type: 'CREATE_COMMENT',
+      payload: {
+        comment: {
+          id: 'comment-1',
+          content: 'Ini adalah komentar pertama',
+          createdAt: '2021-06-21T07:00:00.000Z',
+          upVotesBy: [],
+          downVotesBy: [],
+          owner: {
+            id: 'users-1',
+            name: 'John Doe',
+            email: 'john@example.com',
+          },
+        },
+      },
+    };
+
+    const expectedState = {
+      ...initialState,
+      comments: [action.payload.comment],
+    };
+
     // action
+    const nextState = threadDetailReducer(initialState, action);
+
     // assert
+    expect(nextState).toEqual(expectedState);
   });
 
   it(`should return threadDetail with the comments upVotesBy including the user
