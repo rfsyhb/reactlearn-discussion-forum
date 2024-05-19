@@ -653,32 +653,34 @@ describe('threadDetailReducer function', () => {
     // action 1: down vote comment when user not in downVotesBy
     const nextStateDownVoteCommentNoUser = threadDetailReducer(
       initialState,
-      actionDownVoteCommentNoUser,
+      actionDownVoteCommentNoUser
     );
 
     // assert 1
-    expect(nextStateDownVoteCommentNoUser).toEqual(expectedStateDownVoteCommentNoUser);
+    expect(nextStateDownVoteCommentNoUser).toEqual(
+      expectedStateDownVoteCommentNoUser
+    );
 
     // action 2: down vote comment when user already in downVotesBy
     const nextStateDownVoteCommentAvailableUser = threadDetailReducer(
       initialStateWithDownVote,
-      actionDownVoteCommentAvailableUser,
+      actionDownVoteCommentAvailableUser
     );
 
     // assert 2
     expect(nextStateDownVoteCommentAvailableUser).toEqual(
-      expectedStateDownVoteCommentAvailableUser,
+      expectedStateDownVoteCommentAvailableUser
     );
 
     // action 3: down vote comment when user already in upVotesBy
     const nextStateDownVoteCommentAvailableUserUpVote = threadDetailReducer(
       initialState,
-      actionDownVoteCommentAvailableUserUpVote,
+      actionDownVoteCommentAvailableUserUpVote
     );
 
     // assert 3
     expect(nextStateDownVoteCommentAvailableUserUpVote).toEqual(
-      expectedStateDownVoteCommentAvailableUserUpVote,
+      expectedStateDownVoteCommentAvailableUserUpVote
     );
   });
 
@@ -686,7 +688,91 @@ describe('threadDetailReducer function', () => {
       user if user was in upVotesBy or downVotesBy for NEUTRALIZE_VOTE_COMMENT 
       action`, () => {
     // arrange
-    // action
-    // assert
+    const initialState = {
+      id: 'thread-1',
+      title: 'Thread Pertama',
+      body: 'Ini adalah thread pertama',
+      category: 'General',
+      createdAt: '2021-06-21T07:00:00.000Z',
+      owner: {
+        id: 'users-1',
+        name: 'John Doe',
+        avatar: 'https://generated-image-url.jpg',
+      },
+      upVotesBy: [],
+      downVotesBy: [],
+      comments: [
+        {
+          id: 'comment-1',
+          content: 'Ini adalah komentar pertama',
+          createdAt: '2021-06-21T07:00:00.000Z',
+          owner: {
+            id: 'users-1',
+            name: 'John Doe',
+            avatar: 'https://generated-image-url.jpg',
+          },
+          upVotesBy: ['testUser-1'],
+          downVotesBy: ['testUser-2'],
+        },
+      ],
+    };
+
+    const actionNeutralizeVoteInUpVotes = {
+      type: 'NEUTRALIZE_VOTE_COMMENT',
+      payload: {
+        commentId: 'comment-1',
+        userId: 'testUser-1',
+      },
+    };
+
+    const expectedStateNeutralizeVoteInUpVotes = {
+      ...initialState,
+      comments: [
+        {
+          ...initialState.comments[0],
+          upVotesBy: [],
+        },
+      ],
+    };
+
+    const actionNeutralizeVoteInDownVotes = {
+      type: 'NEUTRALIZE_VOTE_COMMENT',
+      payload: {
+        commentId: 'comment-1',
+        userId: 'testUser-2',
+      },
+    };
+
+    const expectedStateNeutralizeVoteInDownVotes = {
+      ...initialState,
+      comments: [
+        {
+          ...initialState.comments[0],
+          downVotesBy: [],
+        },
+      ],
+    };
+
+    // action 1: neutralize vote when user was in upVotesBy
+    const nextStateNeutralizeVoteInUpVotes = threadDetailReducer(
+      initialState,
+      actionNeutralizeVoteInUpVotes
+    );
+
+    // assert 1
+    expect(nextStateNeutralizeVoteInUpVotes).toEqual(
+      expectedStateNeutralizeVoteInUpVotes
+    );
+
+    // action 2: neutralize vote when user was in downVotesBy
+    const nextStateNeutralizeVoteInDownVotes = threadDetailReducer(
+      initialState,
+      actionNeutralizeVoteInDownVotes
+    );
+
+    // assert 2
+    expect(nextStateNeutralizeVoteInDownVotes).toEqual(
+      expectedStateNeutralizeVoteInDownVotes
+    );
   });
 });
