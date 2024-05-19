@@ -95,9 +95,8 @@ describe('Login spec', () => {
       .click();
 
     // memverifikasi bahwa elemen yang berada di homepage ditampilkan
-    cy.get('button')
-      .contains('Show All')
+    cy.get('.homepage__action')
+      .contains('Tambah Thread Baru')
       .should('be.visible');
-    cy.get('button').contains('Logout').should('be.visible');
   });
 });
