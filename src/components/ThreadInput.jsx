@@ -13,7 +13,13 @@ export default function ThreadInput({ addThread }) {
     <form className="input-thread">
       <label htmlFor="title">
         Judul
-        <input type="text" value={title} id="title" onChange={setTitle} />
+        <input
+          type="text"
+          value={title}
+          id="title"
+          onChange={setTitle}
+          placeholder="Title"
+        />
       </label>
       <label htmlFor="category">
         Kategori
@@ -22,6 +28,7 @@ export default function ThreadInput({ addThread }) {
           value={category}
           id="category"
           onChange={setCategory}
+          placeholder="Category"
         />
       </label>
       <label htmlFor="body">
@@ -32,6 +39,7 @@ export default function ThreadInput({ addThread }) {
           id="body"
           onChange={setBody}
           rows="4"
+          placeholder="Body"
         />
       </label>
       <button
