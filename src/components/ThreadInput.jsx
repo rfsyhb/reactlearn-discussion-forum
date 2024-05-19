@@ -32,14 +32,14 @@ export default function ThreadInput({ addThread }) {
         />
       </label>
       <label htmlFor="body">
-        Pesan
+        Isi Pesan
         <textarea
           type="text"
           value={body}
           id="body"
           onChange={setBody}
           rows="4"
-          placeholder="Bodi"
+          placeholder="Body"
         />
       </label>
       <button
