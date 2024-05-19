@@ -32,7 +32,7 @@ export default function ThreadInput({ addThread }) {
         />
       </label>
       <label htmlFor="body">
-        Pesan
+        Isi Pesan
         <textarea
           type="text"
           value={body}
