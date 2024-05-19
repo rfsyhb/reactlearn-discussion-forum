@@ -39,7 +39,7 @@ export default function ThreadInput({ addThread }) {
           id="body"
           onChange={setBody}
           rows="4"
-          placeholder="Body"
+          placeholder="Bodi"
         />
       </label>
       <button
