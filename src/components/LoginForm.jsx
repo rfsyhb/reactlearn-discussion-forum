@@ -15,7 +15,7 @@ export default function LoginForm({ login }) {
           id="email"
           value={email}
           onChange={onEmailChange}
-          placeholder="Username"
+          placeholder="Email"
         />
       </label>
       <label htmlFor="password">
