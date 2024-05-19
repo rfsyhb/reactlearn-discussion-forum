@@ -25,7 +25,7 @@ export default function LoginForm({ login }) {
           id="password"
           value={password}
           onChange={onPasswordChange}
-          placeholder="Passwords"
+          placeholder="Password"
         />
       </label>
       <button type="button" onClick={() => login({ email, password })}>
