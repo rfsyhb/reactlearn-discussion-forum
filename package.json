@@ -9,7 +9,8 @@
     "lint": "eslint",
     "preview": "vite preview",
     "test": "vitest --no-watch",
-    "e2e": "cypress run"
+    "e2e": "cypress run",
+    "ci:test": "vitest --no-watch && start-server-and-test dev http://localhost:5173/ e2e"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
