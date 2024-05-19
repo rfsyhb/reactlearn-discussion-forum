@@ -433,8 +433,122 @@ describe('threadDetailReducer function', () => {
       in upVotesBy, and without the user in downVotesBy if the user was in
       downVotesBy for UP_VOTE_COMMENT action.`, () => {
     // arrange
-    // action
-    // assert
+    const initialState = {
+      id: 'thread-1',
+      title: 'Thread Pertama',
+      body: 'Ini adalah thread pertama',
+      category: 'General',
+      createdAt: '2021-06-21T07:00:00.000Z',
+      owner: {
+        id: 'users-1',
+        name: 'John Doe',
+        avatar: 'https://generated-image-url.jpg',
+      },
+      upVotesBy: [],
+      downVotesBy: [],
+      comments: [
+        {
+          id: 'comment-1',
+          content: 'Ini adalah komentar pertama',
+          createdAt: '2021-06-21T07:00:00.000Z',
+          owner: {
+            id: 'users-1',
+            name: 'John Doe',
+            avatar: 'https://generated-image-url.jpg',
+          },
+          upVotesBy: [],
+          downVotesBy: ['testUser-2'],
+        },
+      ],
+    };
+
+    const actionUpVoteCommentNoUser = {
+      type: 'UP_VOTE_COMMENT',
+      payload: {
+        commentId: 'comment-1',
+        userId: 'testUser-1',
+      },
+    };
+
+    const expectedStateUpVoteCommentNoUser = {
+      ...initialState,
+      comments: [
+        {
+          ...initialState.comments[0],
+          upVotesBy: ['testUser-1'],
+        },
+      ],
+    };
+
+    const actionUpVoteCommentAvailableUser = {
+      type: 'UP_VOTE_COMMENT',
+      payload: {
+        commentId: 'comment-1',
+        userId: 'testUser-1',
+      },
+    };
+
+    const expectedStateUpVoteCommentAvailableUser = {
+      ...initialState,
+      comments: [
+        {
+          ...initialState.comments[0],
+          upVotesBy: [],
+        },
+      ],
+    };
+
+    const actionUpVoteCommentAvailableUserDownVote = {
+      type: 'UP_VOTE_COMMENT',
+      payload: {
+        commentId: 'comment-1',
+        userId: 'testUser-2',
+      },
+    };
+
+    const expectedStateUpVoteCommentAvailableUserDownVote = {
+      ...initialState,
+      comments: [
+        {
+          ...initialState.comments[0],
+          upVotesBy: ['testUser-2'],
+          downVotesBy: [],
+        },
+      ],
+    };
+
+    // action 1: up vote comment when user not in upVotesBy
+    const nextStateUpVoteCommentNoUser = threadDetailReducer(
+      initialState,
+      actionUpVoteCommentNoUser
+    );
+
+    // assert 1
+    expect(nextStateUpVoteCommentNoUser).toEqual(
+      expectedStateUpVoteCommentNoUser
+    );
+
+    // action 2: up vote comment when user already in upVotesBy
+    const nextStateUpVoteCommentAvailableUser = threadDetailReducer(
+      expectedStateUpVoteCommentNoUser,
+      actionUpVoteCommentAvailableUser
+    );
+
+    // assert 2
+    expect(nextStateUpVoteCommentAvailableUser).toEqual(
+      expectedStateUpVoteCommentAvailableUser
+    );
+
+    // action 3: up vote comment when user already in downVotesBy
+    const nextStateUpVoteCommentAvailableUserDownVote = threadDetailReducer(
+      initialState,
+      actionUpVoteCommentAvailableUserDownVote
+    );
+
+    // assert 3
+    expect(nextStateUpVoteCommentAvailableUserDownVote).toEqual(
+      expectedStateUpVoteCommentAvailableUserDownVote
+    );
   });
 
   it(`should return threadDetail with the comments downVotesBy including
