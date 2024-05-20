@@ -7,4 +7,10 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
   },
+  rewrites: [
+    {
+      source: '/(.*)',
+      destination: '/',
+    },
+  ],
 });

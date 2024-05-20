@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint",
+    "lint": "npx eslint ./src --ext js,jsx",
     "preview": "vite preview",
     "test": "vitest --no-watch",
     "e2e": "cypress run",
